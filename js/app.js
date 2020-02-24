@@ -74,13 +74,6 @@ function takeTurn(e) {
       render();
     }
   }
-<<<<<<< HEAD
-  if (board[0] && board[0] === board[1] && board[1] === board[2]) {
-    win = board[0];   // either X or O
-  } else if (/* next winning condition */) {
-    win = board[0];   // either X or O
-  }
-=======
 }
 function getWinner() {
   let winner = null;
@@ -95,6 +88,6 @@ function getWinner() {
     }
   });
 
+
   return winner ? winner : board.includes("") ? null : "T";
 }
->>>>>>> d87ece205f9ea9ba0959e6acc9c4aee759af1b50
