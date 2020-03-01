@@ -75,7 +75,14 @@ const winningConditions = [
   [24, 16, 8, 0]
 ];
 ///////////////////// APP STATE (VARIABLES) /////////////////////////
-
+let board;
+let turn;
+let win;
+let redWins = 0;
+let yellowWins = 0;
+let ties = 0;
+let first = "Red";
+let winner;
 ///////////////////// CACHED ELEMENT REFERENCES /////////////////////
 
 ///////////////////// EVENT LISTENERS ///////////////////////////////
