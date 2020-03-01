@@ -41,3 +41,52 @@ function init() {
     createblocks();
     start = true;
 }
+function game() {
+    if (start) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        draw();
+        checkCollision();
+        changeDirection();
+        if (blocks.length === 0) {
+            win();
+        }
+    }
+    setTimeout(game, 20 - speed);
+}
+function changeDirection() {
+    if (boinker.right) {
+        speed = 3 * speed_change;
+    }
+    else {
+        speed = -3 * speed_change;
+    }
+    if (boinker.up) {
+        dy = -3;
+    }
+    else {
+        dy = 3;
+    }
+    boinker.x += speed;
+    boinker.y += dy;
+}
+function checkCollision() {
+    if (boinker.x - boinker.radius <= 0) {
+        boinker.right = true;
+    }
+    if (boinker.x + boinker.radius >= canvas.width) {
+        boinker.right = false;
+    }
+    if (boinker.y - boinker.radius <= 0) {
+        boinker.up = false;
+    }
+    if (boinker.y - boinker.radius >= canvas.height) {
+        lose();
+    }
+
+    for (let j = 0; j < blocks.length; j++) {
+        if (boinker.y - boinker.radius <= blocks[j].y + blocks[j].height && boinker.y - boinker.radius > blocks[j].y + blocks[j].height - 5 && boinker.x >= blocks[j].x - boinker.radius && boinker.x < blocks[j].x + blocks[j].width + boinker.radius) {
+            boinker.up = false;
+            ctx.clearRect(blocks[j].x, blocks[j].y, blocks[j].width, blocks[j].height);
+            blocks.splice(j, 1);
+            break;
+        }
