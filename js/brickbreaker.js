@@ -12,9 +12,9 @@ var canvas = document.getElementById("canvas_for_game");
 	var brickPadding = 15;
 	var brickOffsetTop = 30;
 	var brickOffsetLeft = 30;
-	var brickColor = "blue";
+	var brickColor = "white";
 	var ballRadius = 10;
-	var ballColor = "black"
+	var ballColor = "white"
 	var speed = 10;
 	var x = canvas.width/2;
 	var y = canvas.height-30;
@@ -49,7 +49,7 @@ var canvas = document.getElementById("canvas_for_game");
 	function drawPaddle() {
 		ctx.beginPath();
 		ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-		ctx.fillStyle = "black";
+		ctx.fillStyle = "white";
 		ctx.fill();
 		ctx.closePath();
 	}
@@ -113,13 +113,13 @@ var canvas = document.getElementById("canvas_for_game");
 
 	function drawScore() {
 		ctx.font = "22px Georgia";
-		ctx.fillStyle = "Black";
+		ctx.fillStyle = "white";
 		ctx.fillText("Bricks Broken: "+score, 338, 20);
 	}
 
 	function drawLives() {
   ctx.font = "22px Lato";
-  ctx.fillStyle = "black";
+  ctx.fillStyle = "white";
   ctx.fillText("Lives: "+lives, 638, 23);
 }
 
