@@ -84,7 +84,8 @@ let ties = 0;
 let first = "Red";
 let winner;
 ///////////////////// CACHED ELEMENT REFERENCES /////////////////////
-
+const dots = Array.from(document.querySelectorAll("#board div"));
+const message = document.querySelector("h2");
 ///////////////////// EVENT LISTENERS ///////////////////////////////
 
 ///////////////////// FUNCTIONS /////////////////////////////////////
