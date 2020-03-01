@@ -90,3 +90,22 @@ function checkCollision() {
             blocks.splice(j, 1);
             break;
         }
+        else if (!boinker.up && boinker.y + boinker.radius >= blocks[j].y && boinker.y + boinker.radius < blocks[j].y + 12 && boinker.x >= blocks[j].x - boinker.radius && boinker.x < blocks[j].x + blocks[j].width + boinker.radius) {
+          boinker.up = true;
+          ctx.clearRect(blocks[j].x, blocks[j].y, blocks[j].width, blocks[j].height);
+          blocks.splice(j, 1);
+          break;
+        }
+        else if (boinker.x + boinker.radius >= blocks[j].x && boinker.x + boinker.radius < blocks[j].x + 10 && boinker.y >= blocks[j].y - boinker.radius && boinker.y < blocks[j].y + blocks[j].height + boinker.radius) {
+            boinker.right = false;
+            ctx.clearRect(blocks[j].x, blocks[j].y, blocks[j].width, blocks[j].height);
+            blocks.splice(j, 1);
+            break;
+        }
+        else if (boinker.x - boinker.radius <= blocks[j].x + blocks[j].width && boinker.x - boinker.radius > blocks[j].x + blocks[j].width - 10 && boinker.y >= blocks[j].y - boinker.radius && boinker.y < blocks[j].y + blocks[j].height + boinker.radius) {
+            boinker.right = true;
+            ctx.clearRect(blocks[j].x, blocks[j].y, blocks[j].width, blocks[j].height);
+            blocks.splice(j, 1);
+            break;
+        }
+    }
