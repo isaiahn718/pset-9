@@ -109,3 +109,59 @@ function checkCollision() {
             break;
         }
     }
+    if (boinker.y + boinker.radius == user.y) {
+           let a = 3;
+           const speed_change_change = a / 25;
+           for (let i = 2; i <= 100; i += 2) {
+               if (boinker.x >= user.x - boinker.radius + i - 2 && boinker.x < user.x - boinker.radius + i) {
+                   if (i < 50) {
+                       boinker.up = true;
+                       boinker.right = false;
+                       speed = (speed >= 11) ? speed = 11 : speed + 0.5;
+                       speed_change = Math.abs(a);
+                   }
+                   else if (i >= 50) {
+                       boinker.up = true;
+                       boinker.right = true;
+                       speed = (speed >= 11) ? speed = 11 : speed + 0.5;
+                       speed_change = Math.abs(a);
+                   }
+                   break;
+               }
+               else {
+                   a -= speed_change_change;
+               }
+           }
+       }
+
+       if (user.x + user.width > canvas.width) {
+           user.movement = 0;
+           user.x = canvas.width - user.width;
+       }
+       else if (user.x < 0) {
+           user.movement = 0;
+           user.x = 0;
+       }
+       else {
+           user.movement = 20;
+       }
+   }
+   function draw() {
+       ctx.strokeRect(user.x, user.y, user.width, user.height);
+       ctx.beginPath();
+       ctx.arc(boinker.x, boinker.y, boinker.radius, 0, Math.PI * 2);
+       ctx.stroke();
+       for (let i = 0; i < blocks.length; i++) {
+           ctx.strokeRect(blocks[i].x, blocks[i].y, blocks[i].width, blocks[i].height);
+       }
+   }
+   function getArrowKeys(event) {
+       if (start) {
+           if (event.keyCode == 37) {
+               moveuser(-1 * user.movement);
+           }
+           else if (event.keyCode == 39) {
+               moveuser(user.movement);
+           }
+       }
+   }
